@@ -16,6 +16,8 @@ class BusinessUnit(models.Model):
       ('SVP-Office', 'SVP-Office'),
      )
     unit=models.CharField(max_length=100, choices= UNITS, null=True)
+    def __unicode__(self):  # Python 3: def __str__(self):
+        return unicode(self.unit) or u''
 
 class UserProfile(models.Model):
     #user=models.ForeignKey(User, unique=True, related_name="")
@@ -29,15 +31,21 @@ class UserProfile(models.Model):
 class SeniorVicePresident(UserProfile):
     user=models.OneToOneField(User, unique=True, related_name="seniorvicepresident")
     office=models.CharField(max_length=60, null=True)
+    def __unicode__(self):  # Python 3: def __str__(self):
+        return unicode(self.last_name) or u''
 
 class SeniorManager(UserProfile):
     user=models.OneToOneField(User, unique=True, related_name="seniormanager")
     superior = models.ForeignKey(SeniorVicePresident, related_name="subordinates")
+    def __unicode__(self):  # Python 3: def __str__(self):
+        return unicode(self.last_name) or u''
 
 class Manager(UserProfile):
     user=models.OneToOneField(User, unique=True, related_name="manager")
     superior = models.ForeignKey(SeniorManager, related_name="subordinates")
-    
+    def __unicode__(self):  # Python 3: def __str__(self):
+        return unicode(self.last_name) or u''
+
 class Employee(UserProfile):
     user=models.OneToOneField(User, unique=True, related_name="employee")
     SKILL_LEVEL=(
@@ -61,7 +69,8 @@ class Employee(UserProfile):
                                        choices=SKILL_LEVEL,
                                        default='None', null=True)
     superior = models.ForeignKey(Manager, related_name="subordinates")
-
+    def __unicode__(self):  # Python 3: def __str__(self):
+        return unicode(self.last_name) or u''
 
 
 
