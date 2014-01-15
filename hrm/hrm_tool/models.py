@@ -3,12 +3,6 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 
 
-#def create_user_profile(sender, instance, created, **kwargs):
-    #if created:
-     #   UserProfile.objects.create(user=instance)   
-
-#post_save.connect(create_user_profile, sender=User)
-
 class BusinessUnit(models.Model):
     UNITS = (
       ('Sales', 'Sales'),
@@ -20,7 +14,6 @@ class BusinessUnit(models.Model):
         return unicode(self.unit) or u''
 
 class UserProfile(models.Model):
-    #user=models.ForeignKey(User, unique=True, related_name="")
     first_name = models.CharField(max_length=20, null=True)
     last_name = models.CharField(max_length = 20, null=True)
     business_unit=models.ForeignKey(BusinessUnit)
