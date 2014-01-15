@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-us" >
+<head>
+<title>Log in</title>
+
+
+</head>
+
+
+<body>
+
+<!-- Container -->
+<div id="container">
+    
+    
+
+    
+        
+    
+
+    <!-- Content -->
+    <div id="content">
+        
+        
+        
+
+
+
+
+<div id="content-main">
+<form action="" method="post" id="login-form">{% csrf_token %}
+  <div class="form-row">
+    
+    <label class="required">Username:</label> <input id="username" maxlength="254" name="username" type="text" />
+  </div>
+  <div class="form-row">
+    
+    <label class="required">Password:</label> <input id="password" name="password" type="password" />
+
+  </div>
+  
+ <button type="submit">Sign in</button>
+ 
+</form>
+
+
+</div>
+
+        
+        <br class="clear" />
+    </div>
+    <!-- END Content -->
+
+    <div id="footer"></div>
+</div>
+<!-- END Container -->
+
+</body>
+</html>
