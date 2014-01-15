@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+
+</head>
+<body>
+
+<div id="container" style="width:100%">
+
+	<div id="header" style="background-color:#FFA500;">
+	<h1 style="margin-bottom:0;">Fellow Engineers Management Tool (FEMT)</h1></div>
+
+	<div id="menu" style="background-color:#FFD700;height:100%;width:15%;float:left;">
+	<b>Menu</b><br>
+	{% if name == 'seniorvicepresident' or name == 'seniormanager' or name == 'manager'%}
+	<a href="/analytics">Analytics</a><br>
+	<a href="/report">Reports</a><br>
+	<a href="/list_engineers">List of fellow engineers</a>
+	{% endif %}
+	{% if name == 'employee' %}
+	<a href="/edit_profile">Edit Profile</a>
+	{% endif %}
+	<br>
+	<br>
+	<br>
+	<a href="/logout">Logout</a>
+
+	</div>
+
+
+
+{% if name == 'seniorvicepresident' or name == 'seniormanager' or name == 'manager' %}
+	<div id="content" style="background-color:#EEEEEE;height:100%;width:85%;float:left;">
+
+
+		{% if name == 'seniorvicepresident' or name == 'seniormanager' or name == 'manager' %}
+		{% if employees %}
+		<h2>Employees</h2>
+ 		<table border="1">
+		<tr><td>Last Name</td><td>First Name</td><td>Superior</td><td>Department</td></tr>
+		{% for value in employees %}
+		<tr><td>{{ value.last_name }}</td><td>{{ value.first_name }}</td><td>{{ value.superior.last_name }}</td><td>{{ value.business_unit.unit }}</td></tr>	
+		{% endfor %}
+		</table>
+		{% endif %}
+		{% endif %}
+ 
+		{% if name == 'seniorvicepresident' or name == 'seniormanager' %}
+		{% if managers %}
+		<h2>Managers</h2>
+ 		<table border="1">
+		<tr><td>Last Name</td><td>First Name</td><td>Superior</td><td>Department</td></tr>
+		{% for value in managers %}
+		<tr><td>{{ value.last_name }}</td><td>{{ value.first_name }}</td><td>{{ value.superior.last_name }}</td><td>{{ value.business_unit.unit }}</td></tr>	
+		{% endfor %}
+		</table>
+		{% endif %}
+		{% endif %}
+
+
+		{% if name == 'seniorvicepresident'  %}
+		{% if seniormanagers %}
+		<h2>Senior Managers</h2>
+ 		<table border="1">
+		<tr><td>Last Name</td><td>First Name</td><td>Superior</td><td>Department</td></tr>
+		{% for value in seniormanagers %}
+		<tr><td>{{ value.last_name }}</td><td>{{ value.first_name }}</td><td>{{ value.superior.last_name }}</td><td>{{ value.business_unit.unit }}</td></tr>	
+		{% endfor %}
+		</table>
+		{% endif %}
+		{% endif %}
+	</div>
+
+{% endif %}
+
+
+<div id="footer" style="background-color:#FFA500;clear:both;text-align:center;">
+Copyright © Cisco</div>
+
+</div>
+
+</body>
+</html> 

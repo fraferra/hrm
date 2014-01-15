@@ -1,31 +1,67 @@
 <!DOCTYPE html>
-<html lang="en-us" >
+<html>
 <head>
-<title>Home</title>
-
+	<title>Home</title>
 
 </head>
 <body>
 
-{% if name == 'seniorvicepresident' %}
-	{{profile.first_name}}
-	{{name}}
-{% endif %}
+<div id="container" style="width:100%">
 
-{% if name == 'seniormanager' %}
-	{{profile.first_name}}
-	{{name}}
-{% endif %}
+	<div id="header" style="background-color:#FFA500;">
+	<h1 style="margin-bottom:0;">Fellow Engineers Management Tool (FEMT)</h1></div>
 
-{% if name == 'manager' %}
-	{{profile.first_name}}
-	{{name}}
+	<div id="menu" style="background-color:#FFD700;height:200px;width:15%;float:left;">
+	<b>Menu</b><br>
+	{% if name == 'seniorvicepresident' or name == 'seniormanager' or name == 'manager'%}
+	<a href="/analytics">Analytics</a><br>
+	<a href="/report">Reports</a><br>
+	<a href="/list_engineers">List of fellow engineers</a>
+	{% endif %}
+	{% if name == 'employee' %}
+	<a href="/edit_profile">Edit Profile</a>
+	{% endif %}
+	<br>
+	<br>
+	<br>
+	<a href="/logout">Logout</a>
+
+	</div>
+
+
+
+{% if name == 'seniorvicepresident' or name == 'seniormanager' or name == 'manager'%}
+	<div id="content" style="background-color:#EEEEEE;height:200px;width:85%;float:left;">
+		Senior Vice President
+		{{profile.first_name}}
+		{{name}}
+		<br>
+		<br>
+		<form action="/result" method="get">
+			<center><p>Search:<input type="text" placeholder="search" name="search" />
+			<input type="submit" value="submit" /></p><center>
+		</form>
+		
+
+	</div>
+
 {% endif %}
 
 {% if name == 'employee' %}
-	{{profile.first_name}}
-	{{name}}
+	<div id="content" style="background-color:#EEEEEE;height:200px;width:85%;float:left;">
+		Employee
+		{{profile.first_name}}
+		{{name}}
+
+
+	</div>
+
 {% endif %}
 
+<div id="footer" style="background-color:#FFA500;clear:both;text-align:center;">
+Copyright © Cisco</div>
+
+</div>
+
 </body>
-</html>
+</html> 
