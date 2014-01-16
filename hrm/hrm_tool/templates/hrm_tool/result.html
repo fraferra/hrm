@@ -40,7 +40,7 @@
  		<table border="1">
 		<tr><td>Last Name</td><td>First Name</td><td>Superior</td><td>Department</td></tr>
 		{% for value in employees %}
-		<tr><td>{{ value.last_name }}</td><td>{{ value.first_name }}</td><td>{{ value.superior.last_name }}</td><td>{{ value.business_unit.unit }}</td></tr>	
+		<tr><td><a href="/view_profile?user={{ value.user }}">{{ value.last_name }}</a></td><td>{{ value.first_name }}</td><td>{{ value.superior.last_name }}</td><td>{{ value.business_unit.unit }}</td></tr>	
 		{% endfor %}
 		</table>
 		{% endif %}
@@ -52,7 +52,7 @@
  		<table border="1">
 		<tr><td>Last Name</td><td>First Name</td><td>Superior</td><td>Department</td></tr>
 		{% for value in managers %}
-		<tr><td>{{ value.last_name }}</td><td>{{ value.first_name }}</td><td>{{ value.superior.last_name }}</td><td>{{ value.business_unit.unit }}</td></tr>	
+		<tr><td><a href="/view_profile?user={{ value.user }}">{{ value.last_name }}</a></td><td>{{ value.first_name }}</td><td>{{ value.superior.last_name }}</td><td>{{ value.business_unit.unit }}</td></tr>	
 		{% endfor %}
 		</table>
 		{% endif %}
@@ -65,7 +65,7 @@
  		<table border="1">
 		<tr><td>Last Name</td><td>First Name</td><td>Superior</td><td>Department</td></tr>
 		{% for value in seniormanagers %}
-		<tr><td>{{ value.last_name }}</td><td>{{ value.first_name }}</td><td>{{ value.superior.last_name }}</td><td>{{ value.business_unit.unit }}</td></tr>	
+		<tr><td><a href="/view_profile?user={{ value.user }}">{{ value.last_name }}</a></td><td>{{ value.first_name }}</td><td>{{ value.superior.last_name }}</td><td>{{ value.business_unit.unit }}</td></tr>	
 		{% endfor %}
 		</table>
 		{% endif %}
